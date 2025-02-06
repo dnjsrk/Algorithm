@@ -14,7 +14,7 @@ public class SWEA1984 {
 			int min = arr[0];
 			int max = arr[0];
 			
-			for (int i = 1; i < arr.length; i++) {
+			for (int i = 1; i < arr.length; i++) {  // 최대값과 최소값을 찾음
 				if (min > arr[i]) {
 					min = arr[i];
 				}
@@ -25,15 +25,15 @@ public class SWEA1984 {
 			}
 			
 			int cnt = 0;
-			int sum = 0;
+			double sum = 0;
 			for (int i = 0; i < arr.length; i++) {
-				if (arr[i] != min && arr[i] != max) {
+				if (arr[i] != min && arr[i] != max) {  // 최대값과 최소값을 제외한 수를 모두 더한다
 					sum += arr[i];
 					cnt++;
 				}
 			}
 			
-			int avg = Math.(sum / cnt);
+			int avg = (int)Math.round(sum / cnt);  // 소수점 첫째 자리에서 반올림한 평균
 			System.out.println("#" + tc + " " + avg);
 		}
 	}
