@@ -13,7 +13,7 @@ class Microbe {
 
 public class SWEA2382 {
     static int N, M, K;
-    static int[] dx = {0, -1, 1, 0, 0}; // 상(1), 하(2), 좌(3), 우(4)
+    static int[] dx = {0, -1, 1, 0, 0};
     static int[] dy = {0, 0, 0, -1, 1};
 
     public static void main(String[] args) {
@@ -21,7 +21,7 @@ public class SWEA2382 {
 
         int t = sc.nextInt();
         for (int tc = 1; tc <= t; tc++) {
-            N = sc.nextInt();  // 전역 변수로 업데이트
+            N = sc.nextInt();
             M = sc.nextInt();
             K = sc.nextInt();
 
