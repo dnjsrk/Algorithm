@@ -1,54 +1,53 @@
 import java.util.Scanner;
 
 public class SWEA4613 {
-    static int n;
-    static int m;
-    static char[][] arr;
+    static int N, M, minCnt;
+    static int[][] flag;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         int t = sc.nextInt();
         for (int tc = 1; tc <= t; tc++) {
-            n = sc.nextInt();
-            m = sc.nextInt();
+            N = sc.nextInt();
+            M = sc.nextInt();
+            flag = new int[N][M];
 
-            arr = new char[n][m];
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < N; i++) {
                 String str = sc.next();
-                for (int j = 0; j < m; j++) {
-                    arr[i][j] = str.charAt(j);
+                for (int j = 0; j < M; j++) {
+                    flag[i][j] = str.charAt(j);
                 }
             }
 
-            int min = Integer.MAX_VALUE;
+            minCnt = Integer.MAX_VALUE;
 
-            int w = 0;
-            for (int i = 1; i < n - 2; i++) {
-                w += colorCnt('W', i);
+            int white = 0;
+            for (int i = 0; i < N - 2; i++) {
+                white += findColor('W', i);
 
-                int b = 0;
-                for (int j = i + 1; j < n - 1; j++) {
-                    b += colorCnt('B', j);
+                int blue = 0;
+                for (int j = i + 1; j < N - 1; j++) {
+                    blue += findColor('B', j);
 
-                    int r = 0;
-                    for (int k = j + 1; k < n; k++) {
-                        r += colorCnt('R', k);
+                    int red = 0;
+                    for (int k = j + 1; k < N; k++) {
+                        red += findColor('R', k);
                     }
 
-                    min = Math.min(min, w + b + r);
+                    minCnt = Math.min(minCnt, white + blue + red);
                 }
             }
 
-
-            System.out.println("#" + tc + " " + min);
+            System.out.println("#" + tc + " " + minCnt);
         }
     }
 
-    private static int colorCnt(char color, int x) {
+    public static int findColor(char color, int r) {
         int cnt = 0;
-        for (int y = 0; y < m; y++) {
-            if (arr[x][y] != color) {
+
+        for (int c = 0; c < M; c++) {
+            if (flag[r][c] != color) {
                 cnt++;
             }
         }
